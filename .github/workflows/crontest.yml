@@ -1,9 +1,8 @@
 name: CRON-Test
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '58 21 15 5 6'
 
 jobs:
   daily-cron:
