@@ -3,7 +3,7 @@ name: Job - Cleanup
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 9,21 * * *'
+    - cron: '3 9,21 * * *'
 
 jobs:
   job-cleanup:
