@@ -1,9 +1,8 @@
-name: CRON Test
+name: My CRON test
 
 on:
   workflow_dispatch:
   schedule:
-    # at every 5th minute
     - cron: '*/5 * * * *'
 
 jobs:
@@ -11,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -X "https://5001c299-7b66-4d9e-a081-42cdd4186c94.mock.pstmn.io/api" \
+         curl -X "https://5001c299-7b66-4d9e-a081-42cdd4186c94.mock.pstmn.io/api" \
           -H 'Content-Type: application/json; charset=utf-8' \
-          -d $'{ "message": "From Github Actions CRON test" }'
+          -d $'{ "message": "Github action CRON Test" }'
