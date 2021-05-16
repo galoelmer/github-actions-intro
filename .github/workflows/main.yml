@@ -2,16 +2,15 @@ name: CRON-Test
 
 on:
   schedule:
-    - cron: '7 22 15 5 6'
+    - cron: '*/10 * * * *'
 
 jobs:
   daily-cron:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
       - run: |
           curl -X "POST" "https://5001c299-7b66-4d9e-a081-42cdd4186c94.mock.pstmn.io/api" \
           -H 'Content-Type: application/json; charset=utf-8' \
