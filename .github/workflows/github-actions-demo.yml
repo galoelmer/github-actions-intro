@@ -5,7 +5,7 @@ on:
     - cron: '*/5 * * * *'
 
 jobs:
-  job-cleanup:
+  daily-cron:
     runs-on: ubuntu-latest
     steps:
       - run: |
