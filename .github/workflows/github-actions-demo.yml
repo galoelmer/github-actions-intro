@@ -1,17 +1,15 @@
-name: GitHub Actions Demo
-on: [push]
+name: Job - Cleanup
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 9,21 * * *'
+
 jobs:
-  Explore-GitHub-Actions:
+  job-cleanup:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: |
+          curl -X "POST" "https://5001c299-7b66-4d9e-a081-42cdd4186c94.mock.pstmn.io/api" \
+          -H 'Content-Type: application/json; charset=utf-8' \
+          -d $'{ "message": "from Github Actions CRON" }'
